@@ -1,9 +1,11 @@
 package com.epam.mjc;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Spliterator;
 
-public class StringSplitter {
+public class StringSplitter{
 
     /**
      * Splits given string applying all delimeters to it. Keeps order of result substrings as in source string.
@@ -13,6 +15,11 @@ public class StringSplitter {
      * @return List of substrings
      */
     public List<String> splitByDelimiters(String source, Collection<String> delimiters) {
-        throw new UnsupportedOperationException("You should implement this method.");
+        for (String delimiter : delimiters) {
+            source = source.replaceAll(delimiter, " ");
+        }
+        return List.of(source.trim().split("\\s+"));
+
+
     }
 }
